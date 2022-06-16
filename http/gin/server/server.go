@@ -10,7 +10,7 @@ import (
 	"syscall"
 	"time"
 
-	"go-sdk/infrastructure/tracer"
+	"github.com/leijjiru1994/go-sdk/infrastructure/tracer"
 
 	"github.com/DeanThompson/ginpprof"
 	"github.com/facebookgo/grace/gracenet"

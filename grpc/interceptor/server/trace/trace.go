@@ -5,7 +5,7 @@ import (
 	"os"
 	"strconv"
 
-	common "go-sdk/common/model"
+	common "github.com/leijjiru1994/go-sdk/common/model"
 
 	"github.com/openzipkin/zipkin-go"
 	"github.com/openzipkin/zipkin-go/model"

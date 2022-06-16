@@ -1,4 +1,4 @@
-module go-sdk
+module github.com/leijjiru1994/go-sdk
 
 go 1.16
 
@@ -12,6 +12,7 @@ require (
 	github.com/gin-gonic/gin v1.5.0
 	github.com/go-playground/locales v0.14.0
 	github.com/go-playground/universal-translator v0.18.0
+	github.com/go-redis/redis/v8 v8.11.5
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.7.1

@@ -3,14 +3,14 @@ package server
 import (
 	"context"
 	"github.com/rs/zerolog"
-	"go-sdk/http/gin/middleware/access_log"
-	"go-sdk/http/gin/middleware/metric"
-	"go-sdk/infrastructure/log"
+	"github.com/leijjiru1994/go-sdk/http/gin/middleware/access_log"
+	"github.com/leijjiru1994/go-sdk/http/gin/middleware/metric"
+	"github.com/leijjiru1994/go-sdk/infrastructure/log"
 	"testing"
 	"time"
 
-	"go-sdk/http/gin/common"
-	"go-sdk/infrastructure/tracer"
+	"github.com/leijjiru1994/go-sdk/http/gin/common"
+	"github.com/leijjiru1994/go-sdk/infrastructure/tracer"
 
 	"github.com/gin-gonic/gin"
 	"github.com/rs/cors"

@@ -8,11 +8,11 @@ import (
 	"strconv"
 	"syscall"
 
-	"go-sdk/grpc/interceptor/server/access_log"
-	"go-sdk/grpc/interceptor/server/metric"
-	"go-sdk/grpc/interceptor/server/trace"
-	"go-sdk/infrastructure/log"
-	"go-sdk/infrastructure/tracer"
+	"github.com/leijjiru1994/go-sdk/grpc/interceptor/server/access_log"
+	"github.com/leijjiru1994/go-sdk/grpc/interceptor/server/metric"
+	"github.com/leijjiru1994/go-sdk/grpc/interceptor/server/trace"
+	"github.com/leijjiru1994/go-sdk/infrastructure/log"
+	"github.com/leijjiru1994/go-sdk/infrastructure/tracer"
 
 	"github.com/facebookgo/grace/gracenet"
 	recovery "github.com/grpc-ecosystem/go-grpc-middleware/recovery"

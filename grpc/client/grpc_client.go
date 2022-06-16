@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"time"
 
-	"go-sdk/grpc/interceptor/client/metric"
-	"go-sdk/grpc/interceptor/client/trace"
-	"go-sdk/infrastructure/tracer"
+	"github.com/leijjiru1994/go-sdk/grpc/interceptor/client/metric"
+	"github.com/leijjiru1994/go-sdk/grpc/interceptor/client/trace"
+	"github.com/leijjiru1994/go-sdk/infrastructure/tracer"
 
 	"google.golang.org/grpc"
 )

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/cors"
-	"go-sdk/infrastructure/tracer"
+	"github.com/leijjiru1994/go-sdk/infrastructure/tracer"
 	"net/http"
 	"time"
 
