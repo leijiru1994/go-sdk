@@ -2,7 +2,6 @@ package server
 
 import (
 	"context"
-	"go-sdk/http/gin/middleware/metric"
 	"net"
 	"net/http"
 	"os"
@@ -11,8 +10,6 @@ import (
 	"syscall"
 	"time"
 
-	"go-sdk/http/gin/middleware/access_log"
-	"go-sdk/infrastructure/log"
 	"go-sdk/infrastructure/tracer"
 
 	"github.com/DeanThompson/ginpprof"
@@ -21,7 +18,6 @@ import (
 	zipkinHttp "github.com/openzipkin/zipkin-go/middleware/http"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/rs/cors"
-	"github.com/rs/zerolog"
 )
 
 func NewDefaultServer(ctx context.Context, conf *Config) (server *Server, err error) {
@@ -30,18 +26,8 @@ func NewDefaultServer(ctx context.Context, conf *Config) (server *Server, err er
 		return
 	}
 
-	var logger zerolog.Logger
-	logger, err = log.InitLogger(ctx, &log.Config{
-		BizName: "access_log",
-		File:    conf.AccessLog,
-		Level:   conf.LogLevel,
-	})
-	if err != nil {
-		return
-	}
-
 	engine := gin.New()
-	engine.Use(metric.Metrics(), access_log.WithAccessLog(access_log.WithLogger(logger)), gin.Recovery())
+	engine.Use(conf.HandlerFunc...)
 	engine.GET("metrics", gin.WrapH(promhttp.Handler()))
 	ginpprof.Wrap(engine)
 
@@ -63,6 +49,7 @@ func NewDefaultServer(ctx context.Context, conf *Config) (server *Server, err er
 
 		ReadTimeout:  conf.ReadTimeout,
 		WriteTimeout: conf.WriteTimeout,
+		Cors:         conf.Cors,
 	}, nil
 }
 

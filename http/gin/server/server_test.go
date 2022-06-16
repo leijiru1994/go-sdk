@@ -2,6 +2,10 @@ package server
 
 import (
 	"context"
+	"github.com/rs/zerolog"
+	"go-sdk/http/gin/middleware/access_log"
+	"go-sdk/http/gin/middleware/metric"
+	"go-sdk/infrastructure/log"
 	"testing"
 	"time"
 
@@ -13,6 +17,17 @@ import (
 )
 
 func TestHttpServer(t *testing.T) {
+	var logger zerolog.Logger
+	logger, err := log.InitLogger(context.Background(), &log.Config{
+		BizName: "access_log",
+		File:    "",
+		Level:   zerolog.DebugLevel,
+	})
+	if err != nil {
+		t.Error(err)
+		return
+	}
+
 	cfg := &Config{
 		Tracer:       &tracer.Config{
 			File:      "",
@@ -28,6 +43,12 @@ func TestHttpServer(t *testing.T) {
 		WriteTimeout: time.Second*10,
 		Cors:         cors.Options{
 			AllowedOrigins: []string{"http://www.baidu.com"},
+			//Debug: true,
+		},
+		HandlerFunc: []gin.HandlerFunc{
+			metric.Metrics(),
+			access_log.WithAccessLog(access_log.WithLogger(logger)),
+			gin.Recovery(),
 		},
 	}
 

@@ -25,6 +25,7 @@ type Config struct {
 	WriteTimeout time.Duration `yaml:"write_timeout"`
 
 	Cors cors.Options `yaml:"cors"` // 跨域配置
+	HandlerFunc []gin.HandlerFunc
 }
 
 type Server struct {
