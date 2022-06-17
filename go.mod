@@ -1,4 +1,4 @@
-module github.com/leijjiru1994/go-sdk
+module github.com/leijiru1994/go-sdk
 
 go 1.16
 

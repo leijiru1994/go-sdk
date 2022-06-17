@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/leijjiru1994/go-sdk/common/caller"
-	"github.com/leijjiru1994/go-sdk/common/model"
+	"github.com/leijiru1994/go-sdk/common/caller"
+	"github.com/leijiru1994/go-sdk/common/model"
 
 	"github.com/prometheus/client_golang/prometheus"
 	"google.golang.org/grpc"

@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/rs/zerolog"
-	"github.com/leijjiru1994/go-sdk/common/caller"
+	"github.com/leijiru1994/go-sdk/common/caller"
 )
 
 var (

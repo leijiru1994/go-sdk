@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/leijjiru1994/go-sdk/common/caller"
-	"github.com/leijjiru1994/go-sdk/ecode"
+	"github.com/leijiru1994/go-sdk/common/caller"
+	"github.com/leijiru1994/go-sdk/ecode"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"

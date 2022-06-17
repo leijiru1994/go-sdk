@@ -3,7 +3,7 @@ package common
 import (
 	"net/http"
 
-	"github.com/leijjiru1994/go-sdk/ecode"
+	"github.com/leijiru1994/go-sdk/ecode"
 
 	"github.com/gin-gonic/gin"
 )
