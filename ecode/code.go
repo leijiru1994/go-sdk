@@ -31,8 +31,14 @@ func (e Code) Code() int {
 	return int(e)
 }
 
-func (e Code) Message() string {
-	return e.Error()
+func (e Code) Message() (msg string) {
+	msg = e.Error()
+	errorMessageM.RLock()
+	if d, ok := errorMessageM.m[e.Code()]; ok {
+		msg = d
+	}
+	errorMessageM.RUnlock()
+	return
 }
 
 func (e Code) Equal(err error) bool {
