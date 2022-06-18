@@ -9,7 +9,7 @@ import (
 )
 
 func SendOut(ctx *gin.Context, resp interface{}) {
-	SendWithError(ctx, nil, ecode.OK)
+	SendWithError(ctx, resp, ecode.OK)
 }
 
 func SendError(ctx *gin.Context, err ecode.Code) {
