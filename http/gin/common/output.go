@@ -16,6 +16,16 @@ func SendError(ctx *gin.Context, err ecode.Code) {
 	SendWithError(ctx, nil, err)
 }
 
+func SendErrorWithMsg(ctx *gin.Context, err ecode.Code, msg string) {
+	ctx.Set("code", err.Code())
+	obj := gin.H{
+		"code": err.Code(),
+		"msg":  msg,
+		"data": struct {}{},
+	}
+	ctx.JSON(http.StatusOK, obj)
+}
+
 func SendWithError(ctx *gin.Context, resp interface{}, err ecode.Code) {
 	if resp == nil {
 		resp = struct {}{}
