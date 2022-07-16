@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/leijiru1994/go-sdk/common/caller"
+	"github.com/leijiru1994/go-sdk/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
@@ -95,6 +96,7 @@ func WithAccessLog(opts ...Option) gin.HandlerFunc {
 					"request_params":       mm,
 					"response":             writer.data,
 					"trace_id":             caller.GetTraceIDFromContext(ctx.Request.Context()),
+					"user_id":              util.UserIDFromCtx(ctx),
 				}
 				opt.logger.Log().Interface("message", logInfo).Int64("time", time.Now().Unix()).Send()
 			}()

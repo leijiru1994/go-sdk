@@ -6,6 +6,7 @@ import (
 
 	"github.com/leijiru1994/go-sdk/common/caller"
 	"github.com/leijiru1994/go-sdk/ecode"
+	"github.com/leijiru1994/go-sdk/util"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
@@ -45,6 +46,7 @@ func UnaryServerInterceptor(opts ...Option) grpc.UnaryServerInterceptor {
 			"request_params":       req,
 			"response":             resp,
 			"trace_id":             caller.GetTraceIDFromContext(ctx),
+			"user_id":              util.UserIDFromCtx(ctx),
 		}
 		opt.logger.Log().Interface("message", logInfo).Int64("time", time.Now().Unix()).Send()
 
