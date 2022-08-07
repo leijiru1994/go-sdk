@@ -9,16 +9,32 @@ import (
 	"testing"
 
 	"github.com/gin-gonic/gin"
+	ut "github.com/go-playground/universal-translator"
+	"github.com/leijiru1994/go-sdk/validator/option"
+	"gopkg.in/go-playground/validator.v9"
 )
 
 type Account struct {
 	Username string `json:"username" binding:"required,oneof=leelei leijiru" trans_display:"用户名(username)"`
 	Password string `json:"password" binding:"required,gt=5" trans_display:"密码"`
+	Phone    string `json:"phone" binding:"is_china_phone" trans_display:"该手机号"`
 }
 
 // go test -v -count=1 init_test.go init.go
 func TestTrans(t *testing.T) {
-	err := Init()
+	phoneOpt := option.Option{
+		Tag:        "is_china_phone",
+		ValidateFn: IsValidChinaPhone,
+		RegisterFn: func(ut ut.Translator) error {
+			return ut.Add("is_china_phone", "{0}不是合法的中国大陆手机号", false)
+		},
+		TranslationFn: func(ut ut.Translator, fe validator.FieldError) string {
+			t, _ := ut.T("is_china_phone", fe.Field(), fe.Field())
+			return t
+		},
+	}
+
+	err := Init([]option.Option{phoneOpt}...)
 	if err != nil {
 		t.Error(err)
 
